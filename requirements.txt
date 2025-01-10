@@ -1,0 +1,5 @@
+fastapi==0.115.6
+nltk==3.9.1
+pydantic==2.10.3
+pymorphy2==0.9.1
+uvicorn==0.32.1

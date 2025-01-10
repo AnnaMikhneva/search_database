@@ -1,0 +1,69 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Library Search</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>Welcome to the Library</h1>-->
+<!--    <a href="/register">Register</a>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Corpus Information</title>-->
+<!--    <script>-->
+<!--        async function fetchCorpusInfo() {-->
+<!--            try {-->
+<!--                const response = await fetch('/api/corpus_info');-->
+<!--                const data = await response.json();-->
+<!--                document.getElementById('corpus-title').innerText = data.title;-->
+<!--                document.getElementById('corpus-description').innerText = data.description;-->
+<!--                document.getElementById('corpus-size').innerText = data.size;-->
+<!--            } catch (error) {-->
+<!--                console.error('Error fetching corpus information:', error);-->
+<!--            }-->
+<!--        }-->
+
+<!--        window.onload = fetchCorpusInfo; // Fetch data when the page loads-->
+<!--    </script>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>Corpus Information</h1>-->
+<!--    <div>-->
+<!--        <strong>Title:</strong> <span id="corpus-title"></span><br>-->
+<!--        <strong>Description:</strong> <span id="corpus-description"></span><br>-->
+<!--        <strong>Size:</strong> <span id="corpus-size"></span>-->
+<!--    </div>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Search</title>
+    <script>
+        async function fetchCorpusInfo() {
+            try {
+                const response = await fetch('/api/corpus_info');
+                const data = await response.json();
+                alert(`Title: ${data.title}\nDescription: ${data.description}\nSize: ${data.size}`);
+            } catch (error) {
+                console.error('Error fetching corpus information:', error);
+                alert('Failed to fetch corpus information.');
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Welcome to the Library</h1>
+    <a href="/register">Register</a>
+    <br><br>
+    <button onclick="fetchCorpusInfo()">Show Corpus Information</button>
+</body>
+</html>

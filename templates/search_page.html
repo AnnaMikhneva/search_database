@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Search Results for "{{ query }}"</h1>
+
+    <form method="POST" action="{{ url_for('perform_search') }}">
+        <input type="text" name="query" placeholder="Enter your search query" required>
+        <select name="index_type">
+            <option value="bert">BERT</option>
+            <option value="tf-idf">TF-IDF</option>
+        </select>
+        <input type="number" name="top_k" value="5" min="1" placeholder="Number of results">
+        <button type="submit">Search Again</button>
+    </form>
+
+    <h2>Results:</h2>
+    <ul>
+        {% for result, score in results %}
+            <li>{{ result }} (Relevance Score: {{ score }})</li>
+        {% endfor %}
+    </ul>
+
+    <p><a href="{{ url_for('index') }}">Back to Home</a></p>
+</body>
+</html>

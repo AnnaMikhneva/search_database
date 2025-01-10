@@ -1,0 +1,33 @@
+<!-- search.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+    <h1>Search Page</h1>
+    <form method="POST">
+        <input type="text" name="query" placeholder="Enter your search query" required>
+        <select name="index_type">
+            <option value="bert">BERT</option>
+            <option value="tf-idf">TF-IDF</option>
+        </select>
+        <input type="number" name="top_k" value="5" min="1">
+        <button type="submit">Search</button>
+    </form>
+    <button id="fetch-methods">Fetch Available Methods</button>
+    <div id="methods-list"></div>
+
+    <script>
+        document.getElementById('fetch-methods').addEventListener('click', function() {
+            fetch('/api/available_methods')
+                .then(response => response.json())
+                .then(data => {
+                    const methodsList = document.getElementById('methods-list');
+                    methodsList.innerHTML = '<h2>Available Methods:</h2><ul>' + data.methods.map(method => `<li>${method}</li>`).join('') + '</ul>';
+                });
+        });
+    </script>
+</body>
+</html>
